@@ -1,5 +1,5 @@
 const list = document.getElementById("fancylist");
-const ws = new WebSocket("ws://localhost:7200/ws");
+const ws = new WebSocket("ws://" + window.location.host + "/ws");
 ws.onmessage = function(event) {
     let items = JSON.parse(event.data);
     while (list.firstChild) {
