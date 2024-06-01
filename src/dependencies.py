@@ -1,12 +1,9 @@
 from shutil import which
 from sys import exit
 
-KNOWN_DEPENDENCIES = [
-    "uname",
-    "uptime",
-    "mpstat",
-    "vmstat"
-]
+
+KNOWN_DEPENDENCIES = ["uname", "uptime", "mpstat", "vmstat"]
+
 
 def check_dependencies():
     missing = []
@@ -15,7 +12,7 @@ def check_dependencies():
             missing.append(dep)
 
     if missing:
-        print(f"The following dependencies are missing: {', '.join(missing)}. Please install them!")
+        print(
+            f"The following dependencies are missing: {', '.join(missing)}. Please install them!"
+        )
         exit(1)
-
-

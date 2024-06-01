@@ -1,10 +1,14 @@
-from dependencies import check_dependencies
 from fastapi import FastAPI
-from routes import router
+from fastapi.staticfiles import StaticFiles
 from uvicorn import run
+
+from dependencies import check_dependencies
+from directories import BASE_DIR
+from routes import router
 
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 app.include_router(router)
 
 
