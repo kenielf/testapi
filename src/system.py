@@ -13,7 +13,7 @@ def get_cpu_usage():
     return output['sysstat']['hosts'][0]['statistics'][0]['cpu-load'][0]['usr']
 
 def get_memory_usage():
-    output = run(["vmstat", "-s"], capture_output=True, text=True).stdout.splitlines()
-    total = output[0].rstrip().split(' ')[6]
-    used = output[1].rstrip().split(' ')[6]
+    output = [x.strip() for x in run(["vmstat", "-s"], capture_output=True, text=True).stdout.splitlines()]
+    total = output[0].rstrip().split(' ')[0]
+    used = output[1].rstrip().split(' ')[0]
     return (int(used) / int(total)) * 100
